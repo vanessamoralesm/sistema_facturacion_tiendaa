@@ -1,0 +1,33 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+use App\Models\Usuario;
+class UsuarioSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Usuario::create([
+            [
+                'cedula' => '281-160205-1006B',
+                'nombre' => 'María Pérez',
+                'correo' => 'maria@gmail.com',
+                'password' => bcrypt('12345678'),
+                'rol_tipo' => 'Administrador',
+            ],
+            [
+                'cedula' => '281-160205-1006A',
+                'nombre' => 'Luis García',
+                'correo' => 'luis@gamil.com',
+                'password' => bcrypt('12345678'),
+                'rol_tipo' => 'Administrador',
+            ]
+        ]);
+    }
+}
