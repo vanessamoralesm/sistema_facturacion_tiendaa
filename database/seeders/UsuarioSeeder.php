@@ -13,7 +13,7 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        Usuario::create([
+        Usuario::insert([
             [
                 'cedula' => '281-160205-1006B',
                 'nombre' => 'María Pérez',

@@ -13,7 +13,7 @@ class ProductoFacturaSeeder extends Seeder
      */
     public function run(): void
     {
-        ProductoFactura::create([
+        ProductoFactura::insert([
             [
                 'id_factura' => 1,
                 'id_productos' => 1,

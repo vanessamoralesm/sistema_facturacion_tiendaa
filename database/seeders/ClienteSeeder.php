@@ -14,7 +14,7 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        Cliente::create([
+        Cliente::insert([
             [
                 'cedula' => '281-160205-1006C',
                 'nombre' => 'Ana Torres',

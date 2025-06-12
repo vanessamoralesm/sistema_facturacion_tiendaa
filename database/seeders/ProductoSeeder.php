@@ -14,7 +14,7 @@ class ProductoSeeder extends Seeder
      */
     public function run(): void
     {
-        Producto::create([
+        Producto::insert([
             [
                 'nombre' => 'Pantalon',
                 'precio' => 700,
