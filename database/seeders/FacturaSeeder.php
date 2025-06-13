@@ -17,7 +17,7 @@ class FacturaSeeder extends Seeder
             'fecha' => now(),
             'monto' => 725,
             'cedula_usuario' => '281-160205-1006B',
-            'cedula_cliente' => '281-160205-1006A'
+            'cedula_cliente' => '281-160205-1006C'
         ]);
     }
 }
