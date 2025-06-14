@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Factura;
 use App\Models\Rol;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory;
 
@@ -17,7 +17,8 @@ class Usuario extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $fillable = ['cedula', 'nombre', 'correo', 'password', 'rol_tipo'];
+    protected $fillable = ['cedula', 'nombre', 'email', 'password', 'rol_tipo'];
+    protected $hidden = ['password','remember_token',];
 
     public function rol()
     {
@@ -29,4 +30,3 @@ class Usuario extends Model
         return $this->hasMany(Factura::class, 'cedula_usuario', 'cedula');
     }
 }
-

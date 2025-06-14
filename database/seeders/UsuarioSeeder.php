@@ -17,14 +17,14 @@ class UsuarioSeeder extends Seeder
             [
                 'cedula' => '281-160205-1006B',
                 'nombre' => 'María Pérez',
-                'correo' => 'maria@gmail.com',
+                'email' => 'maria@gmail.com',
                 'password' => bcrypt('12345678'),
                 'rol_tipo' => 'Administrador',
             ],
             [
                 'cedula' => '281-160205-1006A',
                 'nombre' => 'Luis García',
-                'correo' => 'luis@gamil.com',
+                'email' => 'luis@gamil.com',
                 'password' => bcrypt('12345678'),
                 'rol_tipo' => 'Administrador',
             ]

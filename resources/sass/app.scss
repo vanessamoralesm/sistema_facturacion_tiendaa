@@ -1,8 +1,9 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-// Variables
-@import 'variables';
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+
+// resources/sass/app.scss
+@import 'variables';
+@import 'bootstrap'; // Si usas Bootstrap u otros frameworks
+// Tus estilos personalizados aquí

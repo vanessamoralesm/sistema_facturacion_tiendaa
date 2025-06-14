@@ -3,14 +3,13 @@
 @section()
 
     <br>
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="inicio.html" style="color: #5c5b5b;">Inicio</a></li>
         <li class="breadcrumb-item active" aria-current="page" style="color: #3d3a3a;">Clientes</li>
         </ol>
     </nav>
-    
+
     <div style="display: flex; align-items: center; gap: 12px;">
         <img src="IMG/target.gif" alt="clientess" width="150" height="150" style="border-radius: 50%; object-fit: cover;">
         <h5 class="text-big" style="margin: 0;"><strong>Clientes</strong></h5>
