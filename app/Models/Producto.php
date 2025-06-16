@@ -15,12 +15,16 @@ class Producto extends Model
 
     protected $table = 'productos';
 
-    protected $fillable = ['nombre', 'precio', 'detalle', 'cant_disponible'];
+    protected $fillable = [
+        'nombre', 'marca', 'tipo', 'talla',
+        'color', 'detalle', 'precio','stock',
+    ];
 
     public function facturas()
     {
-        return $this->belongsToMany(Factura::class, 'producto_factura')
-                    ->using(ProductoFactura::class)
-                    ->withPivot('cant_productos', 'valor_productos', 'total_por_producto');
+        return $this->belongsToMany(Factura::class, 'producto_factura', 'producto_id', 'factura_id')
+                    ->withPivot('cantidad', 'precio', 'descuento', 'subtotal')
+                    ->withTimestamps();
     }
+    
 }

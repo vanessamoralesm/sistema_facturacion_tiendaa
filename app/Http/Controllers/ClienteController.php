@@ -2,63 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Mostrar listado de clientes con búsqueda y paginación
+    public function index(Request $request)
     {
-        //
+        $buscar = $request->get('buscar');
+
+        $clientes = Cliente::when($buscar, function ($query, $buscar) {
+                $query->where('nombre', 'like', "%$buscar%")
+                      ->orWhere('cedula', 'like', "%$buscar%");
+            })
+            ->orderBy('nombre')
+            ->paginate(3);
+
+        return view('clientes.index', compact('clientes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostrar formulario de creación
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Guardar nuevo cliente
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'correo'    => 'required|email|unique:clientes,correo',
+            'nombre'    => 'required|string|max:100',
+            'cedula'    => 'required|string|unique:clientes,cedula',
+            'direccion' => 'required|string|max:255',
+            'telefono'  => 'required|numeric|digits:8',
+        ]);
+
+        Cliente::create($request->only(['cedula', 'nombre', 'correo', 'direccion', 'telefono']));
+
+        return redirect()->route('clientes.index')
+            ->with('success', 'Usuario creado correctamente')
+            ->with('accion', 'agregar');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Mostrar cliente para editar
+    public function edit(string $cedula)
     {
-        //
+        $cliente = Cliente::findOrFail($cedula);
+        return view('clientes.edit', compact('cliente'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Actualizar datos de un cliente
+    public function update(Request $request, string $cedula)
     {
-        //
+        $cliente = Cliente::findOrFail($cedula);
+
+        $request->validate([
+            'nombre'    => 'required|string|max:100',
+            'correo'    => 'required|email|unique:clientes,correo,' . $cliente->cedula . ',cedula',
+            'direccion' => 'required|string|max:255',
+            'telefono'  => 'required|numeric|digits:8',
+        ]);
+
+        $cliente->update($request->only(['nombre', 'correo', 'direccion', 'telefono']));
+
+        return redirect()->route('clientes.index')
+            ->with('success', 'Cliente actualizado correctamente')
+            ->with('accion', 'actualizar');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Eliminar cliente
+    public function destroy(string $cedula)
     {
-        //
-    }
+        $cliente = Cliente::findOrFail($cedula);
+        $cliente->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('clientes.index')
+            ->with('success', 'Usuario eliminado correctamente')
+            ->with('accion', 'eliminar');
     }
 }

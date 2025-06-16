@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->string('tipo')->primary(); // clave primaria
+            $table->id(); // Primary key
+            $table->string('tipo')->unique();
             $table->timestamps();
-        });
+        }); 
     }
     
-
     /**
      * Reverse the migrations.
      */

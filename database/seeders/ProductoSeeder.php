@@ -16,16 +16,40 @@ class ProductoSeeder extends Seeder
     {
         Producto::insert([
             [
-                'nombre' => 'Pantalon',
-                'precio' => 700,
-                'detalle' => 'Azul',
-                'cant_disponible' => 10
+                'nombre' => 'Pantalón',
+                'precio' => 700.00,
+                'detalle' => 'Algodon',
+                'stock' => 10,
+                'talla' => '6',
+                'tipo' => 'niño',
+                'color' => 'Azul',
+                'marca' => 'Polo',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nombre' => 'Camisa',
-                'precio' => 300,
-                'detalle' => 'XL',
-                'cant_disponible' => 20
+                'precio' => 300.00,
+                'detalle' => 'Algodon',
+                'stock' => 20,
+                'talla' => 'XL',
+                'tipo' => 'mujer',
+                'color' => 'Rojo',
+                'marca' => 'Nike',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre' => 'Vestido niña',
+                'precio' => 450.00,
+                'detalle' => 'seda',
+                'stock' => 15,
+                'talla' => '8',
+                'tipo' => 'niña',
+                'color' => 'Rosado',
+                'marca' => 'Zara',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

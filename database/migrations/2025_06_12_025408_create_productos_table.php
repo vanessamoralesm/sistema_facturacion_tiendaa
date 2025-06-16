@@ -12,14 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->id(); // clave primaria
+            $table->id();
+
             $table->string('nombre');
+            $table->string('marca');
+            $table->string('tipo');  // ej. Niño, Niña, Hombre, Mujer
+            $table->string('talla');      // ej. S, M, L, 4, 6, etc.
+            $table->string('color');      // ej. Rojo, Azul, Negro, etc.
             $table->decimal('precio', 10, 2);
             $table->text('detalle');
-            $table->integer('cant_disponible');
+            $table->integer('stock');
+
             $table->timestamps();
+            $table->unique(['nombre', 'marca', 'tipo', 'talla', 'color']);
         });
     }
+    
+    
 
     /**
      * Reverse the migrations.

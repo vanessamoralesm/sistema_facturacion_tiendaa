@@ -11,15 +11,15 @@ class Rol extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'tipo';
-    public $incrementing = false;
-    protected $keyType = 'string';
-    public $timestamps = false;
+    protected $table = 'roles';
+    protected $primaryKey = 'id';
+    public $incrementing = true; // usualmente id es auto-incremental
+    protected $keyType = 'int';
 
-
-    protected $table = 'roles'; // <-- aquí corregimos el nombre de la tabla
+    protected $fillable = ['tipo'];
     public function usuarios()
     {
-        return $this->hasMany(Usuario::class, 'rol_tipo', 'tipo');
+        // FK en usuarios es 'rol_id', PK en roles es 'id'
+        return $this->hasMany(Usuario::class, 'rol_id', 'id');
     }
 }

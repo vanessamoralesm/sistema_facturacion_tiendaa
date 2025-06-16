@@ -13,21 +13,6 @@ class ProductoFacturaSeeder extends Seeder
      */
     public function run(): void
     {
-        ProductoFactura::insert([
-            [
-                'id_factura' => 1,
-                'id_productos' => 1,
-                'cant_productos' => 1,
-                'valor_productos' => 700,
-                'total_por_producto' => 700
-            ],
-            [
-                'id_factura' => 1,
-                'id_productos' => 2,
-                'cant_productos' => 1,
-                'valor_productos' => 25,
-                'total_por_producto' => 25
-            ]
-        ]);
+        
     }
 }

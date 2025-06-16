@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('cedula')->primary(); // clave primaria
             $table->string('nombre');
             $table->string('correo')->unique();
-            $table->string('direccion')->unique();
+            $table->string('direccion');
             $table->string('telefono')->unique();
             $table->timestamps();
         });

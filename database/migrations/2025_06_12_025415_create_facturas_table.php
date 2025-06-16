@@ -6,28 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up():void
     {
         Schema::create('facturas', function (Blueprint $table) {
-            $table->id(); // clave primaria
-            $table->date('fecha');
-            $table->decimal('monto', 10, 2);
-            $table->string('cedula_usuario'); // foránea
-            $table->string('cedula_cliente'); // foránea
-        
+            $table->id();
+
+            $table->string('cedula_usuario');
+            $table->datetime('fecha');
+            $table->string('cedula_cliente');
+            $table->string('metodo_pago');
+            $table->decimal('monto_recibido', 10, 2);
+            $table->decimal('subtotal', 10, 2);
+            $table->decimal('iva', 10, 2);
+            $table->decimal('total', 10, 2);
+            $table->decimal('vuelto', 10, 2);
+            
+            $table->timestamps();
             $table->foreign('cedula_usuario')->references('cedula')->on('usuarios');
             $table->foreign('cedula_cliente')->references('cedula')->on('clientes');
-            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down():void
     {
         Schema::dropIfExists('facturas');
     }

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('rol_tipo'); // clave foránea
-        
-            $table->foreign('rol_tipo')->references('tipo')->on('roles');
+            
+            $table->unsignedBigInteger('rol_id'); // campo para la clave foránea
+            $table->foreign('rol_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
@@ -26,6 +26,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    
     public function down(): void
     {
         Schema::dropIfExists('usuarios');

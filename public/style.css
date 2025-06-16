@@ -1,27 +1,14 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #f3f4f6;
+    background-color: #f6f6f3b4;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
-.login-container {
-    background: white;
-    height: 600px;
-    padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
 
-.logo {
-    margin-bottom: 1rem;
-}
 h1 {
     font-size: 1.5rem;
     color: #4b5563;

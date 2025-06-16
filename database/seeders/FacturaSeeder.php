@@ -13,11 +13,6 @@ class FacturaSeeder extends Seeder
      */
     public function run(): void
     {
-        Factura::create([
-            'fecha' => now(),
-            'monto' => 725,
-            'cedula_usuario' => '281-160205-1006B',
-            'cedula_cliente' => '281-160205-1006C'
-        ]);
+
     }
 }

@@ -13,25 +13,25 @@ use App\Models\ProductoFactura;
 
 class Factura extends Model
 {
-    use HasFactory;
-
-    protected $table = 'facturas';
-    protected $fillable = ['fecha', 'monto', 'cedula_usuario', 'cedula_cliente'];
-
-    public function usuario()
-    {
-        return $this->belongsTo(Usuario::class, 'cedula_usuario', 'cedula');
-    }
+    protected $fillable = [
+        'cedula_usuario', 'fecha', 'cedula_cliente', 'metodo_pago',
+        'monto_recibido', 'subtotal','iva', 'total', 'vuelto'
+    ];
 
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'cedula_cliente', 'cedula');
     }
 
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'cedula_usuario', 'cedula');
+    }
+
     public function productos()
     {
-        return $this->belongsToMany(Producto::class, 'producto_factura')
-                    ->using(ProductoFactura::class) // es para la tabla intermedia
-                    ->withPivot('cant_productos', 'valor_productos', 'total_por_producto');
+        return $this->belongsToMany(Producto::class, 'producto_factura', 'factura_id', 'producto_id')
+                    ->withPivot('cantidad', 'precio', 'descuento', 'subtotal')
+                    ->withTimestamps();
     }
 }

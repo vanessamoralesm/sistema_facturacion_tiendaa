@@ -17,6 +17,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect()->route('dashboard');
         }
+
         return view('login');
     }
 
@@ -25,26 +26,25 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        // Validación de campos
-        $credentials = $request->validate([
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
-        // Buscamos el usuario en la base de datos
-        $usuario = Usuario::where('email', $credentials['email'])->first();
-
-        // Si existe y la contraseña es válida
-        if ($usuario && Hash::check($credentials['password'], $usuario->password)) {
+    
+        $usuario = Usuario::where('email', $request->email)->first();
+    
+        if ($usuario && Hash::check($request->password, $usuario->password)) {
             Auth::login($usuario);
+            $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
-
-        // Si las credenciales no son válidas
+    
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden.',
         ])->withInput();
     }
+    
+    
 
     /**
      * Procesa el logout.

@@ -9,7 +9,8 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\FacturaProductoController;
-
+use App\Http\Controllers\RespaldoController;
+use App\Http\Controllers\TiendaController;
 // Ruta raíz, redirige según sesión
 Route::get('/', function () {
     return Auth::check()
@@ -27,15 +28,21 @@ Route::post('login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard protegido por middleware auth
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+
+Route::get('/dashboard', [TiendaController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
+
+
+    Route::get('/splash', function () {
+        return view('splash');
+    })->name('splash');
 
 // USUARIOS
 Route::get('usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
 Route::get('usuarios/create', [UsuarioController::class, 'create'])->name('usuarios.create');
 Route::post('usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
-Route::get('usuarios/{usuario}', [UsuarioController::class, 'show'])->name('usuarios.show');
+
 Route::get('usuarios/{usuario}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
 Route::put('usuarios/{usuario}', [UsuarioController::class, 'update'])->name('usuarios.update');
 Route::delete('usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
@@ -62,12 +69,14 @@ Route::delete('productos/{producto}', [ProductoController::class, 'destroy'])->n
 Route::get('clientes', [ClienteController::class, 'index'])->name('clientes.index');
 Route::get('clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
 Route::post('clientes', [ClienteController::class, 'store'])->name('clientes.store');
-Route::get('clientes/{cliente}', [ClienteController::class, 'show'])->name('clientes.show');
+
 Route::get('clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
 Route::put('clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
 Route::delete('clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
 // FACTURAS
+Route::resource('facturas', FacturaController::class);
+
 Route::get('facturas', [FacturaController::class, 'index'])->name('facturas.index');
 Route::get('facturas/create', [FacturaController::class, 'create'])->name('facturas.create');
 Route::post('facturas', [FacturaController::class, 'store'])->name('facturas.store');
@@ -75,12 +84,10 @@ Route::get('facturas/{factura}', [FacturaController::class, 'show'])->name('fact
 Route::get('facturas/{factura}/edit', [FacturaController::class, 'edit'])->name('facturas.edit');
 Route::put('facturas/{factura}', [FacturaController::class, 'update'])->name('facturas.update');
 Route::delete('facturas/{factura}', [FacturaController::class, 'destroy'])->name('facturas.destroy');
+Route::get('facturas/{id}/pdf', [FacturaController::class, 'exportarPDF'])->name('facturas.pdf');
 
-// FACTURA PRODUCTOS
-Route::get('factura-productos', [FacturaProductoController::class, 'index'])->name('factura_productos.index');
-Route::get('factura-productos/create', [FacturaProductoController::class, 'create'])->name('factura_productos.create');
-Route::post('factura-productos', [FacturaProductoController::class, 'store'])->name('factura_productos.store');
-Route::get('factura-productos/{facturaProducto}', [FacturaProductoController::class, 'show'])->name('factura_productos.show');
-Route::get('factura-productos/{facturaProducto}/edit', [FacturaProductoController::class, 'edit'])->name('factura_productos.edit');
-Route::put('factura-productos/{facturaProducto}', [FacturaProductoController::class, 'update'])->name('factura_productos.update');
-Route::delete('factura-productos/{facturaProducto}', [FacturaProductoController::class, 'destroy'])->name('factura_productos.destroy');
+
+Route::get('/respaldar', [RespaldoController::class, 'descargar'])->name('respaldar');
+    Route::get('/descargar-respaldo/{filename}', [RespaldoController::class, 'descargarArchivo'])->name('descargar.archivo');
+    Route::get('/restaurar', [RespaldoController::class, 'vistaRestaurar'])->name('vista.restaurar');
+    Route::post('/restaurar', [RespaldoController::class, 'restaurar'])->name('restaurar');

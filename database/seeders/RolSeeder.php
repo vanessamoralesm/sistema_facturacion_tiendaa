@@ -14,7 +14,15 @@ class RolSeeder extends Seeder
     public function run(): void
     {
         Rol::insert([
-            ['tipo' => 'Administrador']
+            [
+                'id'=>1,
+                'tipo' => 'Administrador'
+            ],
+            [
+                'id'=>2,
+                'tipo' => 'Vendedor'
+            ]
+
         ]);
     }
 }
