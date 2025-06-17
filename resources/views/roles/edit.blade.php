@@ -36,8 +36,8 @@
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Actualizar Rol</button>
+            <a href="{{ route('roles.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Actualizar Rol</button>
         </div>
     </form>
 </div>

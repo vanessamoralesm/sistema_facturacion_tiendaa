@@ -24,7 +24,7 @@
 
 <br>
 
-<div class="container bg-white shadow-md rounded p-4" style="max-width: 700px;">
+<div class="container" style="max-width: 700px;">
     <form action="{{ route('usuarios.store') }}" method="POST">
         @csrf
 
@@ -123,8 +123,8 @@
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+            <a href="{{ route('usuarios.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Guardar Usuario</button>
         </div>
     </form>
 </div>

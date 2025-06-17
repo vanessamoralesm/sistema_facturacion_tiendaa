@@ -17,7 +17,7 @@ class ClienteController extends Controller
                       ->orWhere('cedula', 'like', "%$buscar%");
             })
             ->orderBy('nombre')
-            ->paginate(3);
+            ->paginate(5);
 
         return view('clientes.index', compact('clientes'));
     }

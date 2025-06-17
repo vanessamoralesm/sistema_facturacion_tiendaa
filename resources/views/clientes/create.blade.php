@@ -16,7 +16,7 @@
 
 <br>
 
-<div class="container bg-white shadow-md rounded p-4" style="max-width: 700px;">
+<div class="container" style="max-width: 700px;">
     <form action="{{ route('clientes.store') }}" method="POST">
         @csrf
 
@@ -51,8 +51,8 @@
         
     
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+            <a href="{{ route('clientes.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Guardar Cliente</button>
         </div>
     </form>
 </div>

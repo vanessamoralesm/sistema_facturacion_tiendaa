@@ -52,7 +52,7 @@ class ProductoController extends Controller
             'color' => 'required|string|max:50',
             'detalle' => 'required|string|max:1000',
             'precio' => 'required|numeric|min:0',
-            'cant_disponible' => 'required|integer|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
         Producto::create([
@@ -63,7 +63,7 @@ class ProductoController extends Controller
             'color' => $request->color,
             'detalle' => $request->detalle,
             'precio' => $request->precio,
-            'cant_disponible' => $request->cant_disponible,
+            'stock' => $request->stock,
         ]);
 
         return redirect()->route('productos.index')->with('success', 'Producto creado correctamente.');
@@ -96,7 +96,7 @@ class ProductoController extends Controller
             'color' => 'required|string|max:50',
             'detalle' => 'required|string|max:1000',
             'precio' => 'required|numeric|min:0',
-            'cant_disponible' => 'required|integer|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
         
         
@@ -108,7 +108,7 @@ class ProductoController extends Controller
             'color' => $request->color,
             'detalle' => $request->detalle,
             'precio' => $request->precio,
-            'cant_disponible' => $request->cant_disponible,
+            'stock' => $request->stock,
         ]);
 
         return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente.');

@@ -14,7 +14,7 @@
     <h5 class="text-big"><strong>Editar Usuario</strong></h5>
 </div>
 
-<div class="container bg-white shadow-md rounded p-4" style="max-width: 700px;">
+<div class="container" style="max-width: 700px;">
     <form action="{{ route('usuarios.update', $usuario->cedula) }}" method="POST">
         @csrf
         @method('PUT')
@@ -61,8 +61,8 @@
         </div>    
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+            <a href="{{ route('usuarios.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Actualizar Usuario</button>
         </div>
     </form>
 </div>

@@ -16,7 +16,7 @@
 
 <br>
 
-<div class="container bg-white shadow-md rounded p-4" style="max-width: 700px;">
+<div class="container" style="max-width: 700px;">
     <form action="{{ route('productos.update', $producto->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -49,8 +49,8 @@
                 <input type="number" class="form-control" id="precio" name="precio" value="{{ old('precio', $producto->precio) }}" min="0" step="0.01" required>
             </div>
             <div class="col-md-6 mb-3">
-                <label for="cant_disponible" class="form-label">Cantidad disponible:</label>
-                <input type="number" class="form-control" id="cant_disponible" name="cant_disponible" value="{{ old('cant_disponible', $producto->cant_disponible) }}" min="0" required>
+                <label for="stock" class="form-label">Cantidad disponible:</label>
+                <input type="number" class="form-control" id="stock" name="stock" value="{{ old('stock', $producto->stock) }}" min="0" required>
             </div>
         </div>
 
@@ -84,8 +84,8 @@
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+            <a href="{{ route('productos.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Actualizar Producto</button>
         </div>
     </form>
 </div>

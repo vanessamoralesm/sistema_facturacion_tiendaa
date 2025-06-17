@@ -164,4 +164,5 @@ class FacturaController extends Controller
         $pdf = Pdf::loadView('facturas.pdf', compact('factura', 'subtotal'));
         return $pdf->stream("factura_{$factura->id}.pdf");
     }
+    
 }

@@ -34,7 +34,7 @@ Route::get('/dashboard', [TiendaController::class, 'index'])
     ->name('dashboard');
 
 
-    Route::get('/splash', function () {
+Route::get('/splash', function () {
         return view('splash');
     })->name('splash');
 
@@ -86,6 +86,9 @@ Route::put('facturas/{factura}', [FacturaController::class, 'update'])->name('fa
 Route::delete('facturas/{factura}', [FacturaController::class, 'destroy'])->name('facturas.destroy');
 Route::get('facturas/{id}/pdf', [FacturaController::class, 'exportarPDF'])->name('facturas.pdf');
 
+// Nuevas rutas para búsqueda dinámica
+Route::get('/facturas/clientes', [FacturaController::class, 'getClientes'])->name('facturas.clientes');
+Route::get('/facturas/productos', [FacturaController::class, 'getProductos'])->name('facturas.productos');
 
 Route::get('/respaldar', [RespaldoController::class, 'descargar'])->name('respaldar');
     Route::get('/descargar-respaldo/{filename}', [RespaldoController::class, 'descargarArchivo'])->name('descargar.archivo');

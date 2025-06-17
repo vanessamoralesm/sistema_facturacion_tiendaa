@@ -14,7 +14,7 @@
     <h5 class="text-big" style="margin: 0;"><strong>Editar Clientes</strong></h5>
 </div>
 <br>
-<div class="container bg-white shadow-md rounded p-4" style="max-width: 700px;">
+<div class="container" style="max-width: 700px;">
     <form action="{{ route('clientes.update', $cliente->cedula) }}" method="POST">
         @csrf
         @method('PUT')
@@ -51,8 +51,8 @@
         
 
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
+            <a href="{{ route('clientes.index') }}" class="btn btn-danger animated-button">Cancelar</a>
+            <button type="submit" class="btn btn-danger animated-button">Actualizar Cliente</button>
         </div>
     </form>
 </div>
