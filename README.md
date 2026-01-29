@@ -13,7 +13,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## PASOS PARA LA INSTALCIÓN. 
 ### 1. clonar el repositorio:
-   git clone "https://github.com/vanessamoralesm/sistema_facturacion_tiendaa"
+      git clone "https://github.com/vanessamoralesm/sistema_facturacion_tiendaa"
    
 ### 2. Instalar dependencias:
      composer install
